@@ -33,6 +33,8 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String DB_NAME = "ContactDB";
+
     private ContactsAdapter contactsAdapter;
     private List<Contact> contactArrayList = new ArrayList<>();
 
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(contactsAdapter);
 
-        contactsAppDatabase = Room.databaseBuilder(this, ContactsAppDatabase.class, "ContactDB").build();
+        contactsAppDatabase = Room.databaseBuilder(this, ContactsAppDatabase.class, DB_NAME).build();
     }
 
     public void addOrEditContacts(final boolean isUpdate, final Contact contact, final int position) {
@@ -106,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
         final AlertDialog alertDialog = alertDialogBuilderUserInput.create();
         alertDialog.show();
 
@@ -119,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     alertDialog.dismiss();
                 }
-
                 if (isUpdate && contact != null) {
                     updateContact(newContact.getText().toString(), contactEmail.getText().toString(), position);
                 } else {
