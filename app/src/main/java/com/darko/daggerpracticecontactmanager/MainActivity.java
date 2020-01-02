@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        App.getApp().getContactAppComponent().inject(this);
+        MyApplication.getMyApplication().getContactAppComponent().inject(this);
 
         bindView();
         addAllContacts();

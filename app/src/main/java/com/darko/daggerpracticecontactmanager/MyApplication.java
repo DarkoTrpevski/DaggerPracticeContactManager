@@ -6,23 +6,24 @@ import com.darko.daggerpracticecontactmanager.di.ApplicationModule;
 import com.darko.daggerpracticecontactmanager.di.ContactAppComponent;
 import com.darko.daggerpracticecontactmanager.di.DaggerContactAppComponent;
 
-public class App extends Application {
+public class MyApplication extends Application {
 
-    private static App app;
+    private static MyApplication myApplication;
     private ContactAppComponent contactAppComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        app = this;
+        myApplication = this;
         contactAppComponent = DaggerContactAppComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
     }
 
-    public static App getApp() {
-        return app;
+    public static MyApplication getMyApplication() {
+        return myApplication;
     }
+
     public ContactAppComponent getContactAppComponent() {
         return contactAppComponent;
     }
